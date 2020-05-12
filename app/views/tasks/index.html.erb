@@ -1,0 +1,17 @@
+<h1>Our Restaurants</h1>
+<ul>
+<% @tasks.each do |task| %>
+  <li>
+    <% if task.completed %>
+      <input type="checkbox" checked disabled>
+    <% else %>
+      <input type="checkbox" disabled>
+    <% end %>
+    <%= link_to task.title, task_path(task.id) %>
+    <%= link_to "Delete",
+            task_path(task),
+            method: :delete,
+            data: { confirm: "Are you sure?" } %>
+  </li>
+<% end %>
+</ul>
